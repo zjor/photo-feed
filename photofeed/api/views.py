@@ -14,7 +14,10 @@ def feed(request):
     for i in Image.objects.all():
         response.append({
             "id": i.id,
+            "title": i.title,
             "url": i.url,
+            "width": i.width,
+            "height": i.height,
             "creation_date": i.creation_date
             })
 

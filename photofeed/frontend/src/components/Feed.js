@@ -1,12 +1,16 @@
 import React, { Component } from "react";
-import Image from "./Image"
+import Brick from "./Brick"
 
 const styles = {
-    div: {
-        width: '100%',
+    container: {
         display: 'flex',
-        flexDirection: 'column',
         justifyContent: 'center'
+    },
+    masonry: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 200px)',
+        gridGap: '10px',
+        gridAutoRows: '10px'
     }
 }
 
@@ -26,8 +30,20 @@ class Feed extends Component {
     render() {
         const { data, loaded, placeholder } = this.state;
         if (loaded) {
-            const images = data.images.map(el => <Image key={el.id} url={el.url}/>)
-            return <div style={styles.div}>{images}</div>
+            const images = data.images.map(el => 
+                <Brick 
+                    key={el.id} 
+                    url={el.url} 
+                    title={el.title}
+                    imageHeight={el.height}
+                    />)
+            return (
+                <div style={styles.container}>
+                    <div style={styles.masonry}>
+                        {images}
+                    </div>
+                </div>                
+            )
         } else {
             return <p>{placeholder}</p>
         }
