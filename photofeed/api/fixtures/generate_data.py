@@ -1,5 +1,5 @@
+import time
 import random
-import datetime as dt
 
 out_filename = "init.yaml"
 
@@ -16,6 +16,6 @@ with open(out_filename, "w") as f:
         f.write("    width: 200\n")
         f.write("    height: %d\n" % height)
 
-        f.write("    creation_date: %s\n" % str(dt.datetime.now()))
+        f.write("    creation_date: %s\n" % str(round(time.time_ns() / 1000)))
         f.write("\n")
 
