@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'photofeed',
         'USER': 'photofeed',
         'PASSWORD': 's3cr3t',
-        'HOST': '127.0.0.1',
+        'HOST': 'photofeed-db',
         'PORT': '5432'
     }
 }
