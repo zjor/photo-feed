@@ -1,0 +1,46 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: photofeed-web
+  name: photofeed-web
+  namespace: photofeed
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: photofeed-web
+    spec:
+      initContainers:
+      - name: init-db
+        image: busybox
+        command: ['sh', '-c', 'until echo "" | nc -w 2 photofeed-db 5432; do echo waiting for the database; sleep 2; done;']
+      restartPolicy: Always
+      containers:
+      - env:
+        - name: DB_USER
+          value: photofeed
+        - name: DB_PASS
+          value: s3cr3t      
+        image: zjor/photofeed:latest
+        imagePullPolicy: Always
+        name: photofeed-web
+        ports:
+        - containerPort: 8000
+        livenessProbe:
+          # failureThreshold: 10
+          initialDelaySeconds: 30
+          periodSeconds: 15
+          httpGet:
+            path: /
+            port: 8000
+            scheme: HTTP
+        readinessProbe:
+          # failureThreshold: 10
+          initialDelaySeconds: 120
+          periodSeconds: 60
+          httpGet:
+            path: /
+            port: 8000
+            scheme: HTTP

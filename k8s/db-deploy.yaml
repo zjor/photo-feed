@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: photofeed-db
+  name: photofeed-db
+  namespace: photofeed
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: photofeed-db
+    spec:
+      containers:
+      - env:
+        # Due to https://github.com/docker-library/postgres/issues/263#issuecomment-280504406
+        - name: PGDATA
+          value: /var/lib/postgresql/data/subdir
+        - name: POSTGRES_DB
+          value: photofeed
+        - name: POSTGRES_PASSWORD
+          value: s3cr3t
+        - name: POSTGRES_USER
+          value: photofeed
+        image: postgres:10.1-alpine
+        name: photofeed-db
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: photofeed-db
+      volumes:
+      - name: photofeed-db
+        persistentVolumeClaim:
+          claimName: photofeed-db
