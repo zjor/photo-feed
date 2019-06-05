@@ -1,11 +1,31 @@
+import json
+import time
+
 from django.shortcuts import render
 
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseNotAllowed
 
 from .models import Image
+from django.contrib.auth.models import User
 
 def index(request):
     return HttpResponse("Hello world")
+
+def post(request):
+    if request.method != "POST":
+        return HttpResponseNotAllowed(["POST"])
+    
+    body = json.loads(request.body.decode('utf-8'))
+    
+    firstUser = User.objects.all()[0]
+    Image.objects.create(
+        author=firstUser, 
+        title=body["title"], 
+        url=body["url"], 
+        width=int(body["width"]), 
+        height=int(body["height"]), 
+        creation_date=round(time.time_ns() / 1000))
+    return HttpResponse("created")    
 
 
 def feed(request):
