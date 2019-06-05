@@ -1,31 +1,6 @@
 import React, { Component } from "react";
-import Brick from "./Brick"
-
-const styles = {
-    container: {
-        display: 'flex',
-        justifyContent: 'center',        
-        height: '100vh',
-        overflowY: 'scroll',
-        // border: '1px solid goldenrod'
-    },
-    masonry: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 200px)',
-        gridGap: '10px',
-        gridAutoRows: '10px'
-    },
-    pageProgress: {
-        gridColumn: '1 / 4',
-        textAlign: 'center',
-        padding: '10px'
-    }, 
-    feedEnd: {
-        gridColumn: '1 / 4',
-        textAlign: 'center',
-        padding: '10px'
-    }
-}
+import Brick from "../Brick/Brick"
+import "./Feed.css"
 
 class Feed extends Component {
     state = {
@@ -76,18 +51,18 @@ class Feed extends Component {
                     />)
             return (
                 <div                 
-                    style={styles.container}
+                    className="container"
                     onScroll={(event) => this.onScroll(event.target)}>
-                    <div style={styles.masonry}>
+                    <div className="masonry">
                         {images}
-                        { this.state.loadingNext ? <div style={styles.pageProgress}>Loading...</div> : null }
-                        { this.state.feedExhausted ? <div style={styles.feedEnd}>You've reached the end of the feed!</div> : null }
+                        { this.state.loadingNext ? <div className="page-progress">Loading...</div> : null }
+                        { this.state.feedExhausted ? <div className="feed-end">You've reached the end of the feed!</div> : null }
                     </div>                    
                 </div>                
             )
         } else {
             return (
-                <div style={styles.container}>
+                <div className="container">
                     <p>{placeholder}</p>
                 </div>
             )   

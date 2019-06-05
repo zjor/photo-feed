@@ -5,7 +5,6 @@
 
 ## Issues
 
-- show loader while image is not loaded
-- pagination
-- endless scroll
-- deployment
+- migrate to django rest framework
+- authentication
+- post image UI
