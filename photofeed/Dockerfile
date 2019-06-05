@@ -6,10 +6,12 @@ RUN apt-get update -y && apt-get install -y postgresql-client
 # to the terminal with out buffering it first
 ENV PYTHONUNBUFFERED 1
 
+ADD requirements.txt /requirements.txt
+
+RUN pip install -r /requirements.txt
+
 RUN mkdir /photofeed
 
 WORKDIR /photofeed
 
 ADD . /photofeed/
-
-RUN pip install -r requirements.txt

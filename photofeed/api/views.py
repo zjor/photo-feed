@@ -30,5 +30,5 @@ def feed(request):
     response["images"] = images
 
     if len(images) > 0:
-        response["next"] = f"{request.build_absolute_uri('?')}?last_timestamp={images[-1]['creation_date']}&page_size=10"
+        response["next"] = f"{request.path}?last_timestamp={images[-1]['creation_date']}&page_size=10"
     return JsonResponse(response)

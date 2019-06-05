@@ -86,7 +86,11 @@ class Feed extends Component {
                 </div>                
             )
         } else {
-            return <p>{placeholder}</p>
+            return (
+                <div style={styles.container}>
+                    <p>{placeholder}</p>
+                </div>
+            )   
         }
     }
 }

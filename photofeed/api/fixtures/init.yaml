@@ -1,6 +1,23 @@
+- model: auth.user
+  pk: 1
+  fields:
+    password: pbkdf2_sha256$150000$nwiJJQZvr52D$RY6cpJCnxfUnpeQEB89mEniGvVMd0RGmpvQzt2dXlkc=
+    last_login: 2019-06-05 09:38:58.802664+00:00
+    is_superuser: true
+    username: zjor
+    first_name: 'Paul'
+    last_name: 'Simon'
+    email: ''
+    is_staff: true
+    is_active: true
+    date_joined: 2019-06-05 09:38:30.060518+00:00
+    groups: []
+    user_permissions: []
+
 - model: api.image
   pk: 0
   fields:
+    author_id: 1
     title: 1th image
     url: https://picsum.photos/id/147/200/170
     width: 200
@@ -10,6 +27,7 @@
 - model: api.image
   pk: 1
   fields:
+    author_id: 1
     title: 2th image
     url: https://picsum.photos/id/698/200/150
     width: 200
@@ -19,6 +37,7 @@
 - model: api.image
   pk: 2
   fields:
+    author_id: 1
     title: 3th image
     url: https://picsum.photos/id/449/200/310
     width: 200
@@ -28,6 +47,7 @@
 - model: api.image
   pk: 3
   fields:
+    author_id: 1
     title: 4th image
     url: https://picsum.photos/id/347/200/290
     width: 200
@@ -37,6 +57,7 @@
 - model: api.image
   pk: 4
   fields:
+    author_id: 1
     title: 5th image
     url: https://picsum.photos/id/165/200/170
     width: 200
@@ -46,6 +67,7 @@
 - model: api.image
   pk: 5
   fields:
+    author_id: 1
     title: 6th image
     url: https://picsum.photos/id/125/200/330
     width: 200
@@ -55,6 +77,7 @@
 - model: api.image
   pk: 6
   fields:
+    author_id: 1
     title: 7th image
     url: https://picsum.photos/id/884/200/210
     width: 200
@@ -64,6 +87,7 @@
 - model: api.image
   pk: 7
   fields:
+    author_id: 1
     title: 8th image
     url: https://picsum.photos/id/444/200/290
     width: 200
@@ -73,6 +97,7 @@
 - model: api.image
   pk: 8
   fields:
+    author_id: 1
     title: 9th image
     url: https://picsum.photos/id/808/200/170
     width: 200
@@ -82,6 +107,7 @@
 - model: api.image
   pk: 9
   fields:
+    author_id: 1
     title: 10th image
     url: https://picsum.photos/id/225/200/250
     width: 200
@@ -91,6 +117,7 @@
 - model: api.image
   pk: 10
   fields:
+    author_id: 1
     title: 11th image
     url: https://picsum.photos/id/642/200/150
     width: 200
@@ -100,6 +127,7 @@
 - model: api.image
   pk: 11
   fields:
+    author_id: 1
     title: 12th image
     url: https://picsum.photos/id/574/200/290
     width: 200
@@ -109,6 +137,7 @@
 - model: api.image
   pk: 12
   fields:
+    author_id: 1
     title: 13th image
     url: https://picsum.photos/id/294/200/190
     width: 200
@@ -118,6 +147,7 @@
 - model: api.image
   pk: 13
   fields:
+    author_id: 1
     title: 14th image
     url: https://picsum.photos/id/680/200/290
     width: 200
@@ -127,6 +157,7 @@
 - model: api.image
   pk: 14
   fields:
+    author_id: 1
     title: 15th image
     url: https://picsum.photos/id/937/200/270
     width: 200
@@ -136,6 +167,7 @@
 - model: api.image
   pk: 15
   fields:
+    author_id: 1
     title: 16th image
     url: https://picsum.photos/id/976/200/330
     width: 200
@@ -145,6 +177,7 @@
 - model: api.image
   pk: 16
   fields:
+    author_id: 1
     title: 17th image
     url: https://picsum.photos/id/320/200/330
     width: 200
@@ -154,6 +187,7 @@
 - model: api.image
   pk: 17
   fields:
+    author_id: 1
     title: 18th image
     url: https://picsum.photos/id/487/200/190
     width: 200
@@ -163,6 +197,7 @@
 - model: api.image
   pk: 18
   fields:
+    author_id: 1
     title: 19th image
     url: https://picsum.photos/id/764/200/190
     width: 200
@@ -172,6 +207,7 @@
 - model: api.image
   pk: 19
   fields:
+    author_id: 1
     title: 20th image
     url: https://picsum.photos/id/72/200/330
     width: 200
@@ -181,6 +217,7 @@
 - model: api.image
   pk: 20
   fields:
+    author_id: 1
     title: 21th image
     url: https://picsum.photos/id/573/200/210
     width: 200
@@ -190,6 +227,7 @@
 - model: api.image
   pk: 21
   fields:
+    author_id: 1
     title: 22th image
     url: https://picsum.photos/id/81/200/190
     width: 200
@@ -199,6 +237,7 @@
 - model: api.image
   pk: 22
   fields:
+    author_id: 1
     title: 23th image
     url: https://picsum.photos/id/162/200/150
     width: 200
@@ -208,6 +247,7 @@
 - model: api.image
   pk: 23
   fields:
+    author_id: 1
     title: 24th image
     url: https://picsum.photos/id/402/200/150
     width: 200
@@ -217,6 +257,7 @@
 - model: api.image
   pk: 24
   fields:
+    author_id: 1
     title: 25th image
     url: https://picsum.photos/id/738/200/210
     width: 200
@@ -226,6 +267,7 @@
 - model: api.image
   pk: 25
   fields:
+    author_id: 1
     title: 26th image
     url: https://picsum.photos/id/613/200/270
     width: 200
@@ -235,6 +277,7 @@
 - model: api.image
   pk: 26
   fields:
+    author_id: 1
     title: 27th image
     url: https://picsum.photos/id/151/200/150
     width: 200
@@ -244,6 +287,7 @@
 - model: api.image
   pk: 27
   fields:
+    author_id: 1
     title: 28th image
     url: https://picsum.photos/id/783/200/230
     width: 200
@@ -253,6 +297,7 @@
 - model: api.image
   pk: 28
   fields:
+    author_id: 1
     title: 29th image
     url: https://picsum.photos/id/398/200/330
     width: 200
@@ -262,6 +307,7 @@
 - model: api.image
   pk: 29
   fields:
+    author_id: 1
     title: 30th image
     url: https://picsum.photos/id/365/200/170
     width: 200
@@ -271,6 +317,7 @@
 - model: api.image
   pk: 30
   fields:
+    author_id: 1
     title: 31th image
     url: https://picsum.photos/id/915/200/150
     width: 200
@@ -280,6 +327,7 @@
 - model: api.image
   pk: 31
   fields:
+    author_id: 1
     title: 32th image
     url: https://picsum.photos/id/602/200/230
     width: 200
@@ -289,6 +337,7 @@
 - model: api.image
   pk: 32
   fields:
+    author_id: 1
     title: 33th image
     url: https://picsum.photos/id/678/200/190
     width: 200
@@ -298,6 +347,7 @@
 - model: api.image
   pk: 33
   fields:
+    author_id: 1
     title: 34th image
     url: https://picsum.photos/id/433/200/250
     width: 200
@@ -307,6 +357,7 @@
 - model: api.image
   pk: 34
   fields:
+    author_id: 1
     title: 35th image
     url: https://picsum.photos/id/546/200/290
     width: 200
@@ -316,6 +367,7 @@
 - model: api.image
   pk: 35
   fields:
+    author_id: 1
     title: 36th image
     url: https://picsum.photos/id/531/200/290
     width: 200
@@ -325,6 +377,7 @@
 - model: api.image
   pk: 36
   fields:
+    author_id: 1
     title: 37th image
     url: https://picsum.photos/id/122/200/250
     width: 200
@@ -334,6 +387,7 @@
 - model: api.image
   pk: 37
   fields:
+    author_id: 1
     title: 38th image
     url: https://picsum.photos/id/15/200/210
     width: 200
@@ -343,6 +397,7 @@
 - model: api.image
   pk: 38
   fields:
+    author_id: 1
     title: 39th image
     url: https://picsum.photos/id/124/200/310
     width: 200
@@ -352,6 +407,7 @@
 - model: api.image
   pk: 39
   fields:
+    author_id: 1
     title: 40th image
     url: https://picsum.photos/id/975/200/250
     width: 200
@@ -361,6 +417,7 @@
 - model: api.image
   pk: 40
   fields:
+    author_id: 1
     title: 41th image
     url: https://picsum.photos/id/571/200/170
     width: 200
@@ -370,6 +427,7 @@
 - model: api.image
   pk: 41
   fields:
+    author_id: 1
     title: 42th image
     url: https://picsum.photos/id/464/200/310
     width: 200
@@ -379,6 +437,7 @@
 - model: api.image
   pk: 42
   fields:
+    author_id: 1
     title: 43th image
     url: https://picsum.photos/id/976/200/310
     width: 200
@@ -388,6 +447,7 @@
 - model: api.image
   pk: 43
   fields:
+    author_id: 1
     title: 44th image
     url: https://picsum.photos/id/871/200/270
     width: 200
@@ -397,6 +457,7 @@
 - model: api.image
   pk: 44
   fields:
+    author_id: 1
     title: 45th image
     url: https://picsum.photos/id/593/200/330
     width: 200
@@ -406,6 +467,7 @@
 - model: api.image
   pk: 45
   fields:
+    author_id: 1
     title: 46th image
     url: https://picsum.photos/id/83/200/190
     width: 200
@@ -415,6 +477,7 @@
 - model: api.image
   pk: 46
   fields:
+    author_id: 1
     title: 47th image
     url: https://picsum.photos/id/366/200/210
     width: 200
@@ -424,6 +487,7 @@
 - model: api.image
   pk: 47
   fields:
+    author_id: 1
     title: 48th image
     url: https://picsum.photos/id/40/200/230
     width: 200
@@ -433,6 +497,7 @@
 - model: api.image
   pk: 48
   fields:
+    author_id: 1
     title: 49th image
     url: https://picsum.photos/id/683/200/270
     width: 200
@@ -442,6 +507,7 @@
 - model: api.image
   pk: 49
   fields:
+    author_id: 1
     title: 50th image
     url: https://picsum.photos/id/171/200/330
     width: 200

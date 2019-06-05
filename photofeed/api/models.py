@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 class ImageManager(models.Manager):
 
@@ -14,6 +15,7 @@ class Image(models.Model):
     objects = models.Manager()
     images = ImageManager()
 
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     url = models.URLField(max_length=1024)
     width = models.IntegerField()
