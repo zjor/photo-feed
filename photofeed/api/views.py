@@ -7,9 +7,12 @@ from django.http import HttpResponse, JsonResponse, HttpResponseNotAllowed
 
 from .models import Image
 from django.contrib.auth.models import User
+from django.conf import settings
+
 
 def index(request):
-    return HttpResponse("Hello world")
+    return HttpResponse(settings.GIT_COMMIT)
+
 
 def post(request):
     if request.method != "POST":

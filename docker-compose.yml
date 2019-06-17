@@ -14,7 +14,8 @@ services:
       POSTGRES_PASSWORD: s3cr3t
 
   web:
-    build: ./photofeed/
+    # build: ./photofeed/
+    image: zjor/photofeed:latest
     command: bash -c "./wait-for-postgres.sh photofeed-db python manage.py makemigrations && python manage.py migrate && python manage.py loaddata init && python manage.py runserver 0.0.0.0:8000"
     container_name: photofeed
     ports:
