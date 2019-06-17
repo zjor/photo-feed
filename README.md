@@ -5,6 +5,7 @@
 
 ## Issues
 
+- fix responsive design
 - migrate to django rest framework
 - authentication
 - post image UI
