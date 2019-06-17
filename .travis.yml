@@ -4,7 +4,7 @@ services:
   - docker
 
 script:
-  - bash photofeed/build-docker.sh
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - cd ${TRAVIS_BUILD_DIR}/photofeed && bash build-docker.sh
+  - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
   - docker push zjor/photofeed:latest
 
