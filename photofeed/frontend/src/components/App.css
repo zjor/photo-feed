@@ -1,0 +1,33 @@
+.app {
+    width: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+  
+.fab {
+    position: fixed;
+    width: 56px;
+    left: 75%;
+    bottom: 15px;
+    margin-left: -28px;
+}
+
+.fab-action-button {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 56px;
+    height: 56px;
+    background-color: rgb(150, 29, 75);
+    border-radius: 50%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.fab-action-button__icon {
+    display: inline-block;
+    width: 56px;
+    height: 56px;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAABYUlEQVQ4jbWVvUoEMRSFvzNMtcVWIhYiYmG1hQ8h6IP4Dj6Fla8j2C9WYqXdYrEsi4jYOeRYzI/ZYTYZXTxhyOTO5Nybc28SGZODgwtJ9UCE7ASgTDNSAJeYQ6AAKswjYp6PJtXsY9svjhBCuE/OaVqR8bvfPB0kzbLRNsv7F6Q1bmD/JLhL4q7EtkeTxchKIamL2PZG9Ml5IYQDSTe2zyVtOLJdSprGAdgOkt4GuJ6A664UbZ/Z/gohxCU1qu+VoW1f2S66cmsiG5RhW9+XpflWtrZ4iRt9rGnf1hK1jqJ/QmsrgQ9JD7ZP46ia9xKYxKSSAvA5sLIV8NqeJTIGswcc0Ss/2zNJt7YnEck7cDFQhitg0RLXRGINrOmjPseqnrVCzEW6tpN1vC15Y5DdIHGyfoNRO2/IUQ7Js8J2p2+0tUfdIDmNF5Keo3EF3I0hVvbOMyfAFDoZliq03J34j/gGa6caBHlArbAAAAAASUVORK5CYII=") center no-repeat;
+}

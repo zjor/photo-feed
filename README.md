@@ -1,7 +1,7 @@
 ## Commands
 
 - `python3 manage.py runserver` runs development server
-- `python3 manage.py loaddata init` initializes database with fixture data
+- `python3 manage.py loaddata [0001_users | 0002_images]` initializes database with fixture data
 
 ## Issues
 
