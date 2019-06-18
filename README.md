@@ -6,6 +6,9 @@
 ## Issues
 
 - fix responsive design
-- migrate to django rest framework
 - authentication
 - post image UI
+
+## Spec
+
+https://docs.google.com/document/d/1BSBIbcArwyL_cS74pQW2A-WFqnD71oRyLDkCfN_2xq4/edit#heading=h.iu7iyfu0tlll
