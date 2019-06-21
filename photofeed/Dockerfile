@@ -19,3 +19,7 @@ ADD . /photofeed/
 # git commit to be proparated to an endpoint
 ARG GIT_COMMIT
 ENV GIT_COMMIT=${GIT_COMMIT}
+
+# Cloudinary API secret
+ARG CLOUDINARY_API_SECRET
+ENV CLOUDINARY_API_SECRET=${CLOUDINARY_API_SECRET}

@@ -1,5 +1,6 @@
 import json
 import time
+import cloudinary
 
 from django.shortcuts import render
 
@@ -9,24 +10,40 @@ from .models import Image
 from django.contrib.auth.models import User
 from django.conf import settings
 
+from tempfile import NamedTemporaryFile
+
+def upload_image(f):
+    with NamedTemporaryFile() as tmp:        
+        for chunk in f.chunks():
+            tmp.write(chunk)
+            tmp.seek(0)
+
+            upload_response = cloudinary.uploader.upload(tmp.name, width=200)
+            return {
+                'url': upload_response['secure_url'],
+                'width': upload_response['width'],
+                'height': upload_response['height']
+            }
+
 
 def index(request):
     return HttpResponse(settings.GIT_COMMIT)
-
+    
 
 def post(request):
     if request.method != "POST":
         return HttpResponseNotAllowed(["POST"])
-    
-    body = json.loads(request.body.decode('utf-8'))
+
+    res = upload_image(request.FILES['image'])
+    data = request.POST
     
     firstUser = User.objects.all()[0]
     Image.objects.create(
         author=firstUser, 
-        title=body["title"], 
-        url=body["url"], 
-        width=int(body["width"]), 
-        height=int(body["height"]), 
+        title=data["title"], 
+        url=res["url"], 
+        width=res["width"], 
+        height=res["height"], 
         creation_date=round(time.time_ns() / 1000))
     return HttpResponse("created")    
 

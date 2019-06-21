@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
     'api',
     'frontend'
 ]
@@ -126,6 +127,12 @@ GIT_COMMIT=os.environ.get('GIT_COMMIT')
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CLOUDINARY = {
+    'cloud_name': 'zjor-storage',
+    'api_key': '827358144653232',
+    'api_secret': os.environ.get('CLOUDINARY_API_SECRET')
+}
 
 if 'test' in sys.argv:
     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'

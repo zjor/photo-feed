@@ -16,7 +16,7 @@ class AddImage extends Component {
 
     state = {
         title: '',
-        url: '',
+        file: '',
         loading: false,
         done: false
     }
@@ -25,12 +25,15 @@ class AddImage extends Component {
 
         this.setState({ loading: true })
 
-        const { title, url } = this.state
-        const reqBody = {title, url, width: 200, height:300}
+        const { title, file } = this.state
+
+        const formData = new FormData()
+        formData.append('title', title)
+        formData.append('image', file)
+
         fetch('/api/post/', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(reqBody)
+            method: 'POST',            
+            body: formData
         }).then(res => {
             if (res.status == 200) {
                 this.setState({ done: true })
@@ -61,12 +64,11 @@ class AddImage extends Component {
                 <br/>
 
                 <label style={styles.label}>
-                    URL
+                    Image
                     <input 
                         style={styles.input}
-                        type="url" 
-                        value={this.state.url}
-                        onChange={(e) => this.setState({url: e.target.value})}/>
+                        type="file" 
+                        onChange={(e) => this.setState({file: e.target.files[0]})}/>
                 </label>
                 <br/>
 
@@ -76,7 +78,7 @@ class AddImage extends Component {
                 <button onClick={this.onSubmit.bind(this)}>Add</button>
 
                 { this.state.loading ? <div>Posting...</div> : null}
-                
+
             </div>
         )
     }
