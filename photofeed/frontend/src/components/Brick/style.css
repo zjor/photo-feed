@@ -1,0 +1,22 @@
+.title-container {
+    background-color: darkorange;
+    padding: 10px;
+    display: flex;
+}
+
+.title {
+    flex-grow: 2;
+}
+
+.title-delete {
+    visibility: hidden;
+}
+
+.brick:hover .title-delete {
+    visibility: visible;
+}
+
+.title-delete:hover {
+    font-weight: bold;
+    cursor: pointer;
+}

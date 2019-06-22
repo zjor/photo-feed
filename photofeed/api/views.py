@@ -4,13 +4,17 @@ import cloudinary
 
 from django.shortcuts import render
 
-from django.http import HttpResponse, JsonResponse, HttpResponseNotAllowed
+from django.http import HttpResponse, JsonResponse, HttpResponseNotFound
+from django.views.decorators.http import require_http_methods
 
 from .models import Image
 from django.contrib.auth.models import User
 from django.conf import settings
 
 from tempfile import NamedTemporaryFile
+
+import logging
+logger = logging.getLogger(__name__)
 
 def upload_image(f):
     with NamedTemporaryFile() as tmp:        
@@ -26,14 +30,12 @@ def upload_image(f):
             }
 
 
+@require_http_methods(["GET"])
 def index(request):
     return HttpResponse(settings.GIT_COMMIT)
-    
 
+@require_http_methods(["POST"])
 def post(request):
-    if request.method != "POST":
-        return HttpResponseNotAllowed(["POST"])
-
     res = upload_image(request.FILES['image'])
     data = request.POST
     
@@ -48,6 +50,7 @@ def post(request):
     return HttpResponse("created")    
 
 
+@require_http_methods(["GET"])
 def feed(request):
     page_size = int(request.GET.get("page_size", default=10))
     
@@ -72,3 +75,15 @@ def feed(request):
     if len(images) > 0:
         response["next"] = f"{request.path}?last_timestamp={images[-1]['creation_date']}&page_size=10"
     return JsonResponse(response)
+
+
+@require_http_methods(["DELETE"])
+def delete_image(request, id):
+    try:
+        image = Image.objects.get(id=id)
+        image.delete()
+        logger.info(f'Deleted image (ID: {id})')
+        return JsonResponse({'id': id})
+    except Image.DoesNotExist:
+        logger.warn(f'Image was not found (ID: {id})')
+        return HttpResponseNotFound()

@@ -16,7 +16,7 @@ services:
   web:
     build: ./photofeed/
     # image: zjor/photofeed:latest
-    command: bash -c "./wait-for-postgres.sh photofeed-db python manage.py makemigrations && python manage.py migrate && python manage.py loaddata init && python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "./wait-for-postgres.sh photofeed-db python manage.py makemigrations && python manage.py migrate && python manage.py loaddata 0001_users.yaml 0002_images.yaml && python manage.py runserver 0.0.0.0:8000"
     container_name: photofeed
     ports:
       - "9000:8000"

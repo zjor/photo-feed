@@ -42,3 +42,11 @@ class ImageModelTest(TestCase):
         Image.objects.create(author=self.author, title="#2", url="https://google.com", width=500, height=300, creation_date=2)
         self.assertTrue(Image.images.get_page(page_size=1).first().title == "#2")
 
+    def test_should_delete_image(self):
+        image_id = Image.objects.create(author=self.author, title="#1", url="https://google.com", width=500, height=300, creation_date=1).id
+        self.assertEqual(1, Image.objects.count())
+        image = Image.objects.get(id=image_id)
+        image.delete()
+        self.assertEqual(0, Image.objects.count())
+
+

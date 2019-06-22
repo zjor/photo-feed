@@ -39,15 +39,29 @@ class Feed extends Component {
         }
     }
 
+    onDelete(id) {
+        fetch(`/api/images/${id}/`, {
+            method: 'DELETE'
+        }).then(res => {
+            if (res.status == 200) {
+                this.componentDidMount()
+            } else {
+                console.log(res)
+            }
+        })
+    }
+
     render() {
         const { data, loaded, placeholder } = this.state;
         if (loaded) {            
             const images = data.images.map(el => 
-                <Brick 
+                <Brick
+                    id={el.id}
                     key={el.id} 
                     url={el.url} 
                     title={el.title}
                     imageHeight={el.height}
+                    onDelete={id => this.onDelete(id)}
                     />)
             return (
                 <div                 
