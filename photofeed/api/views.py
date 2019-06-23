@@ -4,7 +4,7 @@ import cloudinary
 
 from django.shortcuts import render
 
-from django.http import HttpResponse, JsonResponse, HttpResponseNotFound
+from django.http import HttpResponse, JsonResponse, HttpResponseNotFound, HttpResponseServerError
 from django.views.decorators.http import require_http_methods
 
 from .models import Image
@@ -36,18 +36,21 @@ def index(request):
 
 @require_http_methods(["POST"])
 def post(request):
-    res = upload_image(request.FILES['image'])
-    data = request.POST
-    
-    firstUser = User.objects.all()[0]
-    Image.objects.create(
-        author=firstUser, 
-        title=data["title"], 
-        url=res["url"], 
-        width=res["width"], 
-        height=res["height"], 
-        creation_date=round(time.time_ns() / 1000))
-    return HttpResponse("created")    
+    try:
+        res = upload_image(request.FILES['image'])
+        data = request.POST
+        
+        firstUser = User.objects.all()[0]
+        image = Image.objects.create(
+            author=firstUser, 
+            title=data["title"], 
+            url=res["url"], 
+            width=res["width"], 
+            height=res["height"], 
+            creation_date=round(time.time_ns() / 1000))
+        return JsonResponse({'id': image.id})
+    except:
+        return HttpResponseServerError("Failed to upload an image")
 
 
 @require_http_methods(["GET"])

@@ -6,7 +6,6 @@
 ## Issues
 
 - fix env variables in docker-compose
-- upload image preview
 - upload error handling
 - unit tests for upload flow
 - responsive design for upload

@@ -1,0 +1,42 @@
+.add-image-container {
+    display: flex;
+    flex-direction: column;
+}
+.label {
+    margin: 8px;
+    display: inline-block;
+}
+
+.input {
+    margin-left: 8px;
+}
+
+.image-preview {
+    max-width: 500px;
+    max-height: 400px;
+}
+
+.add-image-toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+.btn {
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Arial","Verdana","Helvetica","sans-serif";
+    font-size: 12px;
+    font-weight: bold;
+    min-width: 56;
+    width: 56px;
+    -moz-outline: 0 none;
+    outline: 0 none;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    text-align: center;
+}
+
+.upload-status {
+    padding: 8px;
+}

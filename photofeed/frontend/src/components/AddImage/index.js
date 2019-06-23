@@ -1,24 +1,18 @@
 import React, { Component } from "react"
 import { Link, Redirect } from "react-router-dom"
-// import "./style.css"
-
-const styles = {
-    label: {
-        margin: '8px',
-        display: 'inline-block'
-    },
-    input: {
-        marginLeft: '8px'
-    }
-}
+import "./style.css"
 
 class AddImage extends Component {
 
     state = {
         title: '',
         file: '',
+        previewReady: false,
+        imagePreview: undefined,
         loading: false,
-        done: false
+        done: false,
+        error: false,
+        errorMessage: ''
     }
 
     onSubmit() {
@@ -37,11 +31,33 @@ class AddImage extends Component {
         }).then(res => {
             if (res.status == 200) {
                 this.setState({ done: true })
+            } else {
+                this.setState({
+                    error: true, 
+                    loading: false,
+                    errorMessage: `${res.status}: Upload failed`
+                })
             }
         }).catch(err => {
-            console.log(err)
+            this.setState({
+                error: true, 
+                loading: false,
+                errorMessage: err
+            })
         })
 
+    }
+
+    onSelectFile(file) {
+        this.setState({file: file, previewReady: false})
+        const reader = new FileReader()
+        reader.onload = (e) => {
+            this.setState({
+                previewReady: true,
+                imagePreview: e.target.result
+            })
+        }
+        reader.readAsDataURL(file)
     }
 
     render() {
@@ -50,34 +66,41 @@ class AddImage extends Component {
                 <Redirect to="/"/>
             )
         }
+
         return (
-            <div>
+            <div className="add-image-container">
                 <h1>Add new image</h1>
-                <label style={styles.label}>
+                <label className="label">
                     Title
                     <input
-                        style={styles.input}
+                        className="input"
                         type="text" 
                         value={this.state.title} 
                         onChange={(e) => this.setState({title: e.target.value})}/>
                 </label>
                 <br/>
 
-                <label style={styles.label}>
+                <label className="label">
                     Image
                     <input 
-                        style={styles.input}
+                        className="input"
                         type="file" 
-                        onChange={(e) => this.setState({file: e.target.files[0]})}/>
+                        onChange={(e) => this.onSelectFile(e.target.files[0])}/>
                 </label>
                 <br/>
 
-                <Link to="/">
-                    Cancel
-                </Link>
-                <button onClick={this.onSubmit.bind(this)}>Add</button>
+                {this.state.previewReady ? <img className="image-preview" src={this.state.imagePreview}/> : null}
 
-                { this.state.loading ? <div>Posting...</div> : null}
+                <div className="add-image-toolbar">
+                    <Link to="/">
+                        Cancel
+                    </Link>
+                    <button className="btn" onClick={this.onSubmit.bind(this)}>Add</button>
+                </div>
+
+                { this.state.loading ? <div className="upload-status">Posting...</div> : null}
+
+                { this.state.error ? <div className="upload-status">{this.state.errorMessage}</div> : null}
 
             </div>
         )
