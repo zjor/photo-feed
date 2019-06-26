@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Link, Redirect } from "react-router-dom"
+import { Card, CardTitle, CardBody, Form, FormGroup, Label, Input, Button, Spinner } from "reactstrap"
 import "./style.css"
 
 class AddImage extends Component {
@@ -68,37 +69,47 @@ class AddImage extends Component {
         }
 
         return (
-            <div className="add-image-container">
-                <h1>Add new image</h1>
-                <label className="label">
-                    Title
-                    <input
-                        className="input"
-                        type="text" 
-                        value={this.state.title} 
-                        onChange={(e) => this.setState({title: e.target.value})}/>
-                </label>
-                <br/>
+            <div>
+                <Card>
+                    <CardBody>
+                        <CardTitle><h2>Add image</h2></CardTitle>
+                        <Form>
+                            <FormGroup>
+                                <Label for="title">Title</Label>
+                                <Input 
+                                    type="text" 
+                                    name="title" 
+                                    id="title" 
+                                    placeholder="Add image title"
+                                    value={this.state.title}
+                                    onChange={(e) => this.setState({title: e.target.value})}/>
+                            </FormGroup>
 
-                <label className="label">
-                    Image
-                    <input 
-                        className="input"
-                        type="file" 
-                        onChange={(e) => this.onSelectFile(e.target.files[0])}/>
-                </label>
-                <br/>
+                            <FormGroup>
+                                <Label for="file">File</Label>
+                                <Input 
+                                    type="file" 
+                                    name="file" 
+                                    id="file"
+                                    onChange={(e) => this.onSelectFile(e.target.files[0])}/>
+                            </FormGroup>                            
+                        </Form>
 
-                {this.state.previewReady ? <img className="image-preview" src={this.state.imagePreview}/> : null}
+                        {this.state.previewReady ? <div><img className="image-preview" src={this.state.imagePreview}/></div> : null}
 
-                <div className="add-image-toolbar">
-                    <Link to="/">
-                        Cancel
-                    </Link>
-                    <button className="btn" onClick={this.onSubmit.bind(this)}>Add</button>
-                </div>
-
-                { this.state.loading ? <div className="upload-status">Posting...</div> : null}
+                        <div style={{verticalAlign: "middle"}}>
+                            <Button>
+                                <Link to="/" className="add-image-cancel">
+                                    Cancel
+                                </Link>
+                            </Button>{' '}
+                            <Button
+                                color="primary"
+                                onClick={this.onSubmit.bind(this)}>Submit</Button>{' '}
+                            { this.state.loading ? <Spinner color="dark"/> : null}                            
+                        </div>
+                    </CardBody>
+                </Card>
 
                 { this.state.error ? <div className="upload-status">{this.state.errorMessage}</div> : null}
 
